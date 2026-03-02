@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 export default function VisitorList() {
     const [visitors, setVisitors] = useState([]);
     const [search, setSearch] = useState("");
-    const [filter, setFilter] = useState("All"); // All | Entered | Exited
+    const [filter, setFilter] = useState("All");
 
     const loadData = async () => {
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/visitors`);
@@ -48,17 +48,17 @@ export default function VisitorList() {
     });
 
     return (
-        <div className="min-h-fit bg-gradient-to-br from-teal-100 via-cyan-100 to-violet-100 p-6">
+        <div className="min-h-screen bg-gradient-to-br from-teal-100 via-cyan-100 to-violet-100 px-3 sm:px-6 py-4">
 
             <motion.h2
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-3xl font-bold mb-6 text-teal-700 text-center"
+                className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-teal-700 text-center"
             >
                 Visitor List
             </motion.h2>
 
-            <div className="flex flex-col md:flex-row gap-4 mb-4 justify-between">
+            <div className="flex flex-col md:flex-row gap-3 md:gap-4 mb-4 justify-between">
 
                 <div className="relative w-full md:w-1/2">
                     <FaSearch className="absolute left-3 top-3 text-teal-600" />
@@ -71,12 +71,12 @@ export default function VisitorList() {
                     />
                 </div>
 
-                <div className="flex gap-2 bg-white p-2 rounded-xl shadow-md">
+                <div className="flex flex-wrap gap-2 bg-white p-2 rounded-xl shadow-md justify-center">
                     {["All", "Entered", "Exited"].map((status) => (
                         <button
                             key={status}
                             onClick={() => setFilter(status)}
-                            className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300
+                            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-semibold transition-all duration-300
         ${filter === status
                                     ? status === "Entered"
                                         ? "bg-emerald-500 text-white shadow-lg"
@@ -97,7 +97,7 @@ export default function VisitorList() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="overflow-x-auto bg-white rounded-xl shadow-xl"
             >
-                <table className="w-full text-sm text-gray-700">
+                <table className="min-w-[800px] w-full text-sm text-gray-700">
                     <thead className="bg-gradient-to-r from-teal-600 to-violet-600 text-white">
                         <tr>
                             <th className="p-3 text-left"><FaUser className="inline mr-2" />Name</th>
@@ -128,19 +128,19 @@ export default function VisitorList() {
                                 transition={{ delay: i * 0.05 }}
                                 className="border-b hover:bg-teal-50"
                             >
-                                <td className="p-3 capitalize font-semibold text-teal-700">{v.name}</td>
-                                <td className="p-3 text-center">{v.phone}</td>
-                                <td className="p-3 text-center">{v.flatNumber}</td>
-                                <td className="p-3 text-center">{v.purpose}</td>
-                                <td className="p-3 text-center">
+                                <td className="p-2 sm:p-3 capitalize font-semibold text-teal-700">{v.name}</td>
+                                <td className="p-2 sm:p-3 text-center">{v.phone}</td>
+                                <td className="p-2 sm:p-3 text-center">{v.flatNumber}</td>
+                                <td className="p-2 sm:p-3 text-center">{v.purpose}</td>
+                                <td className="p-2 sm:p-3 text-center">
                                     {new Date(v.entryTime).toLocaleTimeString()}
                                 </td>
-                                <td className="p-3 text-center">
+                                <td className="p-2 sm:p-3 text-center">
                                     {v.exitTime
                                         ? new Date(v.exitTime).toLocaleTimeString()
                                         : "-"}
                                 </td>
-                                <td className="p-3 text-center">
+                                <td className="p-2 sm:p-3 text-center">
                                     <motion.span
                                         animate={{ scale: [1, 1.1, 1] }}
                                         transition={{ repeat: Infinity, duration: 1.5 }}
@@ -152,7 +152,7 @@ export default function VisitorList() {
                                         {v.status}
                                     </motion.span>
                                 </td>
-                                <td className="p-3 text-center">
+                                <td className="p-2 sm:p-3 text-center">
                                     {v.status === "Entered" && (
                                         <motion.button
                                             whileHover={{ scale: 1.1 }}
