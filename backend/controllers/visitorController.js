@@ -8,7 +8,7 @@ exports.addVisitor = async (req, res) => {
             phone: req.body.phone,
             flatNumber: req.body.flatNumber,
             purpose: req.body.purpose,
-            entryTime: new Date(),   
+            entryTime: new Date(),
             status: "Entered"
         });
 
@@ -29,29 +29,13 @@ exports.getVisitors = async (req, res) => {
     }
 };
 
-// Updete Exit
-exports.exitVisitor = async (req, res) => {
-    try {
-        const visitor = await Visitor.findByIdAndUpdate(
-            req.params.id,
-            {
-                exitTime: new Date(),
-                status: "Exited",
-            },
-            { new: true }
-        );
-        res.json(visitor);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-};
 
 exports.exitVisitor = async (req, res) => {
     try {
         const visitor = await Visitor.findByIdAndUpdate(
             req.params.id,
             {
-                exitTime: new Date(),   
+                exitTime: new Date(),
                 status: "Exited"
             },
             { new: true }

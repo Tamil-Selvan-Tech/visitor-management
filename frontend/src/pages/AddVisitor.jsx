@@ -40,13 +40,15 @@ export default function AddVisitor() {
     const time = new Date().toLocaleTimeString();
 
     return (
-        <div className="max-h-screen flex justify-center items-center 
-        bg-gradient-to-br from-teal-100 via-cyan-100 to-violet-200 animate-fadeIn">
+        <div className="min-h-screen flex justify-center items-center 
+        px-3 bg-gradient-to-br from-teal-100 via-cyan-100 to-violet-200">
+
             <form
                 onSubmit={handleSubmit}
-                className="bg-white p-4 m-2 rounded-2xl shadow-2xl w-[420px] "
+                className="bg-white p-4 sm:p-6 rounded-2xl shadow-2xl 
+                w-full max-w-md"
             >
-                <h2 className="text-2xl font-bold text-center text-teal-700 mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-center text-teal-700 mb-4 sm:mb-6">
                     Visitor Entry Form
                 </h2>
 
@@ -127,7 +129,8 @@ export default function AddVisitor() {
                 </div>
 
                 <button className="w-full bg-gradient-to-r from-teal-500 to-violet-600
-                 text-white text-xl font-semibold uppercase py-1.5 rounded-lg hover:from-teal-600 hover:to-violet-700">
+                 text-white text-lg sm:text-xl font-semibold uppercase py-2 rounded-lg 
+                 hover:from-teal-600 hover:to-violet-700">
                     Submit
                 </button>
             </form>
