@@ -99,7 +99,7 @@ export default function AddVisitor() {
                     <FaClipboardList className="absolute left-3 top-3 text-rose-600" />
                     <input
                         className="w-full pl-10 p-2 border rounded-lg outline-none
-                         focus:ring-2 focus:ring-rose-400"
+                         focus:ring-2 focus:ring-rose-400 capitalize"
                         placeholder="Purpose of Visit"
                         name="purpose"
                         value={form.purpose}
